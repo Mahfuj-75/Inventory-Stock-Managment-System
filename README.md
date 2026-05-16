@@ -32,14 +32,12 @@ Git & GitHub	Version Control
 XAMPP	Local Server Environment
  # Team Members & Assigned Roles
 
-# Mahfuj Rahman	Purchasing Officer
-# Rabby	Warehouse Staff
-# [....]	Manager
-# [....]	Admin
+Mahfuj Rahman --Purchasing Officer
+Rabby --Warehouse Staff
+[....] --Manager
+[....] --Admin
 
-
-
-# Role-Based System Features
+# Role-Based System Features:
 # Warehouse Staff
 Record stock-in and stock-out transactions
 Monitor warehouse inventory levels
@@ -69,7 +67,7 @@ Monitor overall platform activity
 Manage warehouse activation status
 Generate monthly system reports
 # Core Functionalities
-# Module	            Description
+ Module	            Description
 Authentication System	Secure login with session-based role access
 Inventory Management	Track stock movements and warehouse inventory
 Procurement Management	Manage suppliers and purchase orders
