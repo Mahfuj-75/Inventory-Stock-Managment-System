@@ -1,29 +1,14 @@
 <?php
 
-class Database
-{
-    private $host = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $database = "inventory_management";
+$host = "localhost";
+$user = "root";
+$pass = "";
+$dbname = "inventory_management";
 
-    public $conn;
+$conn = new mysqli($host, $user, $pass, $dbname);
 
-    public function connect()
-    {
-        $this->conn = new mysqli(
-            $this->host,
-            $this->username,
-            $this->password,
-            $this->database
-        );
-
-        if ($this->conn->connect_error) {
-            die("Database Connection Failed: " . $this->conn->connect_error);
-        }
-
-        return $this->conn;
-    }
+if($conn->connect_error){
+    die("Connection Failed");
 }
 
 ?>

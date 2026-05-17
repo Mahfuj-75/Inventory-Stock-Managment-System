@@ -1,71 +1,45 @@
 <?php
 
-require_once(__DIR__ . '/../Config/database.php');
+class ProductModel{
 
-class ProductModel
-{
     private $conn;
 
-    public function __construct()
-    {
-        $database = new Database();
-        $this->conn = $database->connect();
+    function __construct($conn){
+
+        $this->conn = $conn;
     }
 
-    public function getAllProducts()
-    {
-        $query = "SELECT * FROM products ORDER BY id DESC";
+    function getAllProducts(){
 
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        $sql = "SELECT * FROM products";
 
-        $result = $stmt->get_result();
-
-        return $result;
+        return $this->conn->query($sql);
     }
 
-    public function getLowStockProducts()
-    {
-        $query = "SELECT * 
-                  FROM products 
-                  WHERE current_stock <= reorder_level";
+    function lowStockProducts(){
 
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result;
+        $sql = "SELECT * FROM products
+                WHERE current_stock <= reorder_level";
+
+        return $this->conn->query($sql);
     }
 
-    public function searchProduct($keyword)
-    {
-        $query = "SELECT * 
-                  FROM products 
-                  WHERE name LIKE ? 
-                  OR sku LIKE ?";
+    function searchProduct($name){
 
-        $stmt = $this->conn->prepare($query);
+        $sql = "SELECT * FROM products
+                WHERE name LIKE ?";
 
-        $search = "%" . $keyword . "%";
+        $search = "%".$name."%";
 
-        $stmt->bind_param("ss", $search, $search);
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bind_param("s",$search);
 
         $stmt->execute();
 
         return $stmt->get_result();
     }
 
-    public function getProductById($id)
-    {
-        $query = "SELECT * FROM products WHERE id = ?";
-
-        $stmt = $this->conn->prepare($query);
-
-        $stmt->bind_param("i", $id);
-
-        $stmt->execute();
-
-        return $stmt->get_result()->fetch_assoc();
-    }
 }
 
 ?>
