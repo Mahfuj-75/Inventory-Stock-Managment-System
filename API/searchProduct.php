@@ -10,7 +10,8 @@ $name = $_GET['name'];
 
 $result = $model->searchProduct($name);
 
-while($row = $result->fetch_assoc()){
+while($row = $result->fetch_assoc())
+    {
 
     echo $row['name']."<br>";
 }
