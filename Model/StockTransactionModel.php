@@ -34,7 +34,6 @@ class StockTransactionModel {
     public function removeStock($product_id, $warehouse_id, $user_id, $quantity) {
 
         global $conn;
-
 //present stock check kore
         $checkSql = "SELECT current_stock FROM products WHERE id = ?";
         $checkStmt = $conn->prepare($checkSql);
@@ -73,6 +72,14 @@ class StockTransactionModel {
         $updateStmt->bind_param("ii", $quantity, $product_id);
         $updateStmt->execute();
         return "Stock Out Successful";
+    }
+    public function getTransactions() {
+
+    global $conn;
+
+    $sql = "SELECT * FROM stock_transactions ORDER BY id DESC";
+    $result = $conn->query($sql);
+    return $result;
     }
 }
 ?>
