@@ -3,7 +3,8 @@
 
 session_start();
 
-if(!isset($_SESSION['user_id'])){
+if(!isset($_SESSION['user_id']))
+{
 
     header("location: ../../login.php");
 }
@@ -69,15 +70,18 @@ placeholder="Search Product">
 <script>
 
 document.getElementById("search")
-.addEventListener("keyup", function(){
+.addEventListener("keyup", function()
+{
 
     let name = this.value;
 
     let xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function(){
+    xhttp.onreadystatechange = function()
+    {
 
-        if(this.readyState == 4 && this.status == 200){
+        if(this.readyState == 4 && this.status == 200)
+        {
 
             document.getElementById("result")
             .innerHTML = this.responseText;

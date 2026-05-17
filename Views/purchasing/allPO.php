@@ -2,7 +2,8 @@
 
 session_start();
 
-if(!isset($_SESSION['user_id'])){
+if(!isset($_SESSION['user_id']))
+{
 
     header("location: ../../login.php");
 }
@@ -36,7 +37,8 @@ $result = $controller->allPO();
 
 </tr>
 
-<?php while($row = $result->fetch_assoc()){ ?>
+<?php while($row = $result->fetch_assoc())
+{ ?>
 
 <tr>
 
