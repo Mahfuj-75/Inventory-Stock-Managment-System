@@ -2,7 +2,8 @@
 
 session_start();
 
-if(!isset($_SESSION['user_id'])){
+if(!isset($_SESSION['user_id']))
+{
 
     header("location: ../../login.php");
 }
@@ -15,7 +16,8 @@ $controller = new PurchaseOrderController($conn);
 
 $message = "";
 
-if(isset($_POST['create'])){
+if(isset($_POST['create']))
+    {
 
     $supplier = $_POST['supplier'];
     $date = $_POST['date'];
@@ -30,7 +32,8 @@ if(isset($_POST['create'])){
         $notes
     );
 
-    if($result){
+    if($result)
+    {
 
         $message = "Purchase Order Created";
     }

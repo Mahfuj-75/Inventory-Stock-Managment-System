@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <title>Inventory System</title>
+    <title>Inventory Management System</title>
 
     <style>
 
