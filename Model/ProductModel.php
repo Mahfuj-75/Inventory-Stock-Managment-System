@@ -1,22 +1,26 @@
 <?php
 
-class ProductModel{
+class ProductModel
+{
 
     private $conn;
 
-    function __construct($conn){
+    function __construct($conn)
+    {
 
         $this->conn = $conn;
     }
 
-    function getAllProducts(){
+    function getAllProducts()
+    {
 
         $sql = "SELECT * FROM products";
 
         return $this->conn->query($sql);
     }
 
-    function lowStockProducts(){
+    function lowStockProducts()
+    {
 
         $sql = "SELECT * FROM products
                 WHERE current_stock <= reorder_level";
@@ -24,7 +28,8 @@ class ProductModel{
         return $this->conn->query($sql);
     }
 
-    function searchProduct($name){
+    function searchProduct($name)
+    {
 
         $sql = "SELECT * FROM products
                 WHERE name LIKE ?";

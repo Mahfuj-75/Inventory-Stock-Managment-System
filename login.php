@@ -6,7 +6,8 @@ include('Config/database.php');
 
 $error = "";
 
-if(isset($_POST['login'])){
+if(isset($_POST['login']))
+    {
 
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -14,33 +15,33 @@ if(isset($_POST['login'])){
     $sql = "SELECT * FROM users
             WHERE email=? AND role='purchasing'";
 
-    $stmt = $conn->prepare($sql);
+    $Log = $conn->prepare($sql);
 
-    $stmt->bind_param("s",$email);
+    $Log->bind_param("s",$email);
 
-    $stmt->execute();
+    $Log->execute();
 
-    $result = $stmt->get_result();
+    $result = $Log->get_result();
 
-    if($result->num_rows > 0){
-
+    if($result->num_rows > 0)
+        {
         $user = $result->fetch_assoc();
-
-        if($password == $user['password_hash']){
+        if($password == $user['password_hash'])
+            {
 
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['name'] = $user['name'];
             $_SESSION['role'] = $user['role'];
 
             header("location: Views/Purchasing/dashboard.php");
-
-        }else{
-
+        }
+        else
+        {
             $error = "Wrong Password";
         }
-
-    }else{
-
+    }
+    else
+    {
         $error = "Invalid Email or password";
     }
 
@@ -86,7 +87,7 @@ input{
     width:100%;
     padding:12px;
     margin-bottom:15px;
-    border:1px solid #ccc;
+    border:1px solid #eeeeee;
     border-radius:4px;
 }
 
@@ -121,27 +122,15 @@ button:hover{
 
 <div class="login-box">
 
-<h2>Inventory Management System</h2>
+   <h2>Inventory Management System</h2>
 
-<form method="POST">
+     <form method="POST">
 
-<input
-type="email"
-name="email"
-placeholder="Enter Email"
-required>
+    <input type="email" name="email" placeholder="Enter Email" required>
 
-<input
-type="password"
-name="password"
-placeholder="Enter Password"
-required>
+<input type="password" name="password" placeholder="Enter Password" required>
 
-<button type="submit" name="login">
-
-Login
-
-</button>
+<button type="submit" name="login">Login</button>
 
 </form>
 

@@ -6,12 +6,14 @@ class ProfileController{
 
     private $userModel;
 
-    function __construct($conn){
+    function __construct($conn)
+    {
 
         $this->userModel = new UserModel($conn);
     }
 
-    function profile($id){
+    function profile($id)
+    {
 
         return $this->userModel->getProfile($id);
     }

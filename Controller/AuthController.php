@@ -7,20 +7,24 @@ class AuthController{
 
     private $userModel;
 
-    function __construct($conn){
+    function __construct($conn)
+    {
 
         $this->userModel = new UserModel($conn);
     }
 
-    function login($email,$password){
+    function login($email,$password)
+    {
 
         $result = $this->userModel->login($email);
 
-        if($result->num_rows > 0){
+        if($result->num_rows > 0)
+            {
 
             $user = $result->fetch_assoc();
 
-            if($password == $user['password_hash']){
+            if($password == $user['password_hash'])
+                {
 
                 session_start();
 
@@ -30,12 +34,16 @@ class AuthController{
 
                 header("location: ../Views/Purchasing/dashboard.php");
 
-            }else{
+            }
+            else
+            {
 
                 return "Wrong Password";
             }
 
-        }else{
+        }
+        else
+        {
 
             return "Email Not Found";
         }

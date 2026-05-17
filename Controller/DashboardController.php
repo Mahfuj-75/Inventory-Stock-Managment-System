@@ -1,15 +1,18 @@
 <?php
 
-class DashboardController{
+class DashboardController
+{
 
     private $conn;
 
-    function __construct($conn){
+    function __construct($conn)
+    {
 
         $this->conn = $conn;
     }
 
-    function lowStockCount(){
+    function lowStockCount()
+    {
 
         $sql = "SELECT * FROM products
                 WHERE current_stock <= reorder_level";
@@ -19,7 +22,8 @@ class DashboardController{
         return $result->num_rows;
     }
 
-    function totalPO(){
+    function totalPO()
+    {
 
         $sql = "SELECT * FROM purchase_orders";
 
@@ -28,7 +32,8 @@ class DashboardController{
         return $result->num_rows;
     }
 
-    function totalSuppliers(){
+    function totalSuppliers()
+    {
 
         $sql = "SELECT * FROM suppliers";
 

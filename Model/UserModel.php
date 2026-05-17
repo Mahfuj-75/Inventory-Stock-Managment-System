@@ -1,15 +1,18 @@
 <?php
 
-class UserModel{
+class UserModel
+{
 
     private $conn;
 
-    function __construct($conn){
+    function __construct($conn)
+    {
 
         $this->conn = $conn;
     }
 
-    function login($email){
+    function login($email)
+    {
 
         $sql = "SELECT * FROM users
                 WHERE email=? AND role='purchasing'";
@@ -23,7 +26,8 @@ class UserModel{
         return $stmt->get_result();
     }
 
-    function getProfile($id){
+    function getProfile($id)
+    {
 
         $sql = "SELECT * FROM users
                 WHERE id=?";
