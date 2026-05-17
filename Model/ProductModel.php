@@ -12,7 +12,6 @@ class ProductModel
         $this->conn = $database->connect();
     }
 
-    // Get All Products
     public function getAllProducts()
     {
         $query = "SELECT * FROM products ORDER BY id DESC";
@@ -25,7 +24,6 @@ class ProductModel
         return $result;
     }
 
-    // Get Low Stock Products
     public function getLowStockProducts()
     {
         $query = "SELECT * 
@@ -34,13 +32,10 @@ class ProductModel
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-
         $result = $stmt->get_result();
-
         return $result;
     }
 
-    // Search Product by Name
     public function searchProduct($keyword)
     {
         $query = "SELECT * 
@@ -59,7 +54,6 @@ class ProductModel
         return $stmt->get_result();
     }
 
-    // Get Product By ID
     public function getProductById($id)
     {
         $query = "SELECT * FROM products WHERE id = ?";
