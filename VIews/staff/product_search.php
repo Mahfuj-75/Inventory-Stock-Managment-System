@@ -1,17 +1,42 @@
+<?php
+
+require_once '../../middleware/auth.php';
+require_once '../../middleware/role_check.php';
+
+?>
 <!DOCTYPE html>
 <html>
+
 <head>
+
     <title>Product Search</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
 </head>
+
 <body>
+    <a href="dashboard.php" class="back-btn">
+    ← Back
+</a>
 
-    <h2>Search Product</h2>
+<h1>Product Search</h1>
 
-    <input type="text" id="search" placeholder="Enter product name">
+<form>
 
-    <div id="result"></div>
+    <input 
+        type="text" 
+        id="search" 
+        placeholder="Enter Product Name"
+    >
 
-    <script src="../../assets/js/product_search.js"></script>
+</form>
+
+<br>
+
+<div id="result"></div>
+
+<script src="../../assets/js/product_search.js"></script>
 
 </body>
 </html>

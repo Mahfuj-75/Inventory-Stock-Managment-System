@@ -1,5 +1,11 @@
 <?php
 
+require_once '../../middleware/auth.php';
+require_once '../../middleware/role_check.php';
+
+?>
+<?php
+
 require_once '../../Controller/TransactionController.php';
 
 ?>
@@ -9,24 +15,12 @@ require_once '../../Controller/TransactionController.php';
 <head>
 
     <title>Transaction History</title>
-
-    <style>
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-        }
-
-    </style>
-
+    <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
+    <a href="dashboard.php" class="back-btn">
+    ← Back
+</a>
 
 <h1>Transaction History</h1>
 
