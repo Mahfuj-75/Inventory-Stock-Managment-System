@@ -5,14 +5,15 @@ ini_set('display_errors',1);
 
 session_start();
 
-if(!isset($_SESSION['user_id'])){
+if(!isset($_SESSION['user_id']))
+{
 
     header("location: ../../login.php");
 }
 
-include(__DIR__ . '/../../Config/database.php');
+include('../../Config/database.php');
 
-include(__DIR__ . '/../../Controller/SupplierController.php');
+include('../../Controllers/SupplierController.php');
 
 $controller = new SupplierController($conn);
 
@@ -40,7 +41,8 @@ $result = $controller->allSuppliers();
 
 </tr>
 
-<?php while($row = $result->fetch_assoc()){ ?>
+<?php while($row = $result->fetch_assoc())
+    { ?>
 
 <tr>
 
