@@ -17,7 +17,8 @@ $id = $_GET['id'];
 
 $message = "";
 
-if(isset($_POST['update'])){
+if(isset($_POST['update']))
+    {
 
     $date = $_POST['date'];
 
