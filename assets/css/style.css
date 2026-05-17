@@ -175,3 +175,48 @@ tr:nth-child(even) {
 .back-btn:hover {
     background: #2f6fcc;
 }
+
+.product-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    margin: 10px 0;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+}
+
+.product-row span {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+}
+
+.product-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    margin-top: 10px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.left {
+    width: 20%;
+    text-align: left;
+}
+
+.center {
+    width: 60%;
+    text-align: center;
+}
+
+.right {
+    width: 20%;
+    text-align: right;
+}

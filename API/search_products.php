@@ -14,15 +14,44 @@ if (isset($_GET['search'])) {
 
         while ($row = $products->fetch_assoc()) {
 
-            echo "<p>" . $row['name'] . "</p>";
+            echo "
+            
+            <div class='product-row'>
+
+                <div class='left'>
+                    ID(" . $row['id'] . ")
+                </div>
+
+                <div class='center'>
+                    " . $row['name'] . "
+                </div>
+
+                <div class='right'>
+                    Q(" . $row['current_stock'] . ")
+                </div>
+
+            </div>
+
+            ";
 
         }
 
     } else {
 
-        echo "<p>No Product Found</p>";
+        echo "
+
+        <div class='product-row'>
+
+            <div class='center'>
+                No Product Found
+            </div>
+
+        </div>
+
+        ";
 
     }
 
 }
+
 ?>

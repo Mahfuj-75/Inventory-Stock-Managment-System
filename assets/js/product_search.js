@@ -1,23 +1,27 @@
-document.getElementById("search")
-    .addEventListener("keyup", function() {
+let searchInput = document.getElementById("search");
 
-        let searchValue = this.value;
+searchInput.addEventListener("keyup", function() {
 
-        let xhr = new XMLHttpRequest();
+    let search = searchInput.value;
 
-        xhr.open(
-            "GET",
-            "../../API/search_products.php?search=" + searchValue,
-            true
-        );
+    let xhttp = new XMLHttpRequest();
 
-        xhr.onload = function() {
+    xhttp.open(
+        "GET",
+        "../../API/search_products.php?search=" + search,
+        true
+    );
 
-            document.getElementById("result").innerHTML =
-                this.responseText;
+    xhttp.send();
 
-        };
+    xhttp.onreadystatechange = function() {
 
-        xhr.send();
+        if (this.readyState == 4 && this.status == 200) {
 
-    });
+            document.getElementById("result").innerHTML = this.responseText;
+
+        }
+
+    };
+
+});

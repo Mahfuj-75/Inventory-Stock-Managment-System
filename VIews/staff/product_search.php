@@ -27,6 +27,7 @@ require_once '../../middleware/role_check.php';
     <input 
         type="text" 
         id="search" 
+        outocomplete="off"
         placeholder="Enter Product Name"
     >
 

@@ -77,7 +77,8 @@ class StockTransactionModel {
 
     global $conn;
 
-    $sql = "SELECT * FROM stock_transactions ORDER BY id DESC";
+    //$sql = "SELECT * FROM stock_transactions ORDER BY id DESC";
+    $sql = "SELECT * FROM stock_transactions ORDER BY created_at DESC";
     $result = $conn->query($sql);
     return $result;
     }
