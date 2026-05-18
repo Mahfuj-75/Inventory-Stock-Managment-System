@@ -13,7 +13,7 @@ if(!isset($_SESSION['user_id']))
 
 include('../../Config/database.php');
 
-include('../../Controllers/ProductController.php');
+include('../../Controller/ProductController.php');
 
 $controller = new ProductController($conn);
 

@@ -1,26 +1,22 @@
 <?php
 
-class SupplierModel
-{
+class SupplierModel{
 
     private $conn;
 
-    function __construct($conn)
-    {
+    function __construct($conn){
 
         $this->conn = $conn;
     }
 
-    function getAllSuppliers()
-    {
+    function getAllSuppliers(){
 
         $sql = "SELECT * FROM suppliers";
 
         return $this->conn->query($sql);
     }
 
-    function supplierProducts($id)
-    {
+    function supplierProducts($id){
 
         $sql = "SELECT * FROM supplier_products
                 WHERE supplier_id=?";
