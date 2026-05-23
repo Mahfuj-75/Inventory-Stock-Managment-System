@@ -2,50 +2,47 @@
 
 session_start();
 
-require_once 'config/database.php';
+include('Config/database.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+$error = "";
+
+if(isset($_POST['login']))
+    {
 
     $email = $_POST['email'];
-
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE email = ?";
+    $sql = "SELECT * FROM users
+            WHERE email=? AND role='purchasing'";
 
-    $stmt = $conn->prepare($sql);
+    $Log = $conn->prepare($sql);
 
-    $stmt->bind_param("s", $email);
+    $Log->bind_param("s",$email);
 
-    $stmt->execute();
+    $Log->execute();
 
-    $result = $stmt->get_result();
+    $result = $Log->get_result();
 
-    if ($result->num_rows > 0) {
-
+    if($result->num_rows > 0)
+        {
         $user = $result->fetch_assoc();
-
-        if ($password == $user['password_hash']) {
+        if($password == $user['password_hash'])
+            {
 
             $_SESSION['user_id'] = $user['id'];
-
+            $_SESSION['name'] = $user['name'];
             $_SESSION['role'] = $user['role'];
 
-            $_SESSION['name'] = $user['name'];
-
-            header("Location: Views/staff/dashboard.php");
-
-            exit();
-
-        } else {
-
-            echo "Wrong Password";
-
+            header("location: Views/Purchasing/dashboard.php");
         }
-
-    } else {
-
-        echo "User Not Found";
-
+        else
+        {
+            $error = "Wrong Password";
+        }
+    }
+    else
+    {
+        $error = "Invalid Email or password";
     }
 
 }
@@ -57,25 +54,93 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <head>
 
-    <title>Login</title>
+<title>Login</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
+<style>
+
+body{
+
+    margin:0;
+    padding:0;
+    background:#f4f4f4;
+    font-family:Arial;
+}
+
+.login-box{
+
+    width:350px;
+    background:white;
+    margin:100px auto;
+    padding:30px;
+    border-radius:5px;
+    box-shadow:0px 0px 10px lightgray;
+}
+
+.login-box h2{
+
+    text-align:center;
+    margin-bottom:30px;
+}
+
+input{
+
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #eeeeee;
+    border-radius:4px;
+}
+
+button{
+
+    width:100%;
+    padding:12px;
+    background:#333;
+    color:white;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+button:hover{
+
+    background:black;
+}
+
+.error{
+
+    color:red;
+    text-align:center;
+    margin-top:15px;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<h1>Warehouse Login</h1>
+<div class="login-box">
 
-<form method="POST">
+   <h2>Inventory Management System</h2>
 
-    <input type="email" name="email" placeholder="Email" required>
+     <form method="POST">
 
-    <input type="password" name="password" placeholder="Password" required>
+    <input type="email" name="email" placeholder="Enter Email" required>
 
-    <button type="submit">Login</button>
+<input type="password" name="password" placeholder="Enter Password" required>
+
+<button type="submit" name="login">Login</button>
 
 </form>
+
+<div class="error">
+
+<?php echo $error; ?>
+
+</div>
+
+</div>
 
 </body>
 </html>
